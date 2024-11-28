@@ -1,0 +1,36 @@
+{
+  "name": "sistema_fechamento_caixa",
+  "version": "1.0.0",
+  "description": "<h3 align=\"center\"> Inicializando o Node e o Git</h3>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch \"src/\" --exec \"node_modules/.bin/ts-node src/index.ts\" -e ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "http-status-codes": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.7.2"
+  },
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  },
+  "include": [
+    "src"
+  ]
+}
