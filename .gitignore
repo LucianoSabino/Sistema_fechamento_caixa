@@ -1,4 +1,6 @@
 /node_modules
-.env_
+rr.md
+.env
 
-readme.md
+/coverage
+*.sqlite
