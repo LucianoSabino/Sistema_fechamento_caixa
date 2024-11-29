@@ -14,7 +14,7 @@ import { JWTService, PasswordCrypto } from "../../shared/services";
 //     nome: string;
 // }
 
-interface IBodyProps extends Omit<Iusuario, "id" | "nome"> {}
+interface IBodyProps extends Omit<Iusuario, "id" | "nome" | "role"> {}
 
 export const singInValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
@@ -33,6 +33,7 @@ export const singIn = async (
 
   const result = await UsuarioProvider.getByEmail(email);
 
+  // Garantir que o `result` é do tipo `Iusuario`
   if (result instanceof Error) {
     res.status(StatusCodes.UNAUTHORIZED).json({
       errors: {
@@ -47,6 +48,7 @@ export const singIn = async (
     senha,
     result.senha
   );
+
   if (!passwordMatch) {
     res.status(StatusCodes.UNAUTHORIZED).json({
       errors: {
@@ -55,8 +57,20 @@ export const singIn = async (
     });
     return;
   } else {
-    // Gerando o tokem
-    const accessToken = JWTService.sign({ uid: result.id });
+    // Garantir que role está definida
+    if (!result.role) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: {
+          default: "Role não definida no usuário.",
+        },
+      });
+      return;
+    }
+    // Gerando o token
+    const accessToken = JWTService.sign({
+      uid: result.id,
+      role: result.role,
+    });
 
     if (accessToken === "JWT_SECRET_NOT_FOUND") {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

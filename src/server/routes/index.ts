@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
-import { ensureAuthenticated } from "../shared/middlewares";
+import { getRoleFromToken, ensureAuthenticated } from "../shared/middlewares";
 import { UsuarioController } from "../controller";
 
 const router = Router();
@@ -20,4 +20,9 @@ router.post(
   UsuarioController.singUpValidation,
   UsuarioController.singUp
 );
+
+router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
+  res.json({ message: `Bem-vindo, admin!` });
+});
+
 export { router };

@@ -2,6 +2,7 @@ import * as jwt from "jsonwebtoken";
 
 interface IJwtData {
   uid: number;
+  role: string;
 }
 
 // Ele gera o tokem
@@ -19,7 +20,7 @@ const verify = (tokem: string) => {
     if (typeof decoded === "string") {
       return "INVALID_TOKEN";
     }
-    return decoded;
+    return decoded as IJwtData;
   } catch (error) {
     return "INVALID_TOKEN";
   }

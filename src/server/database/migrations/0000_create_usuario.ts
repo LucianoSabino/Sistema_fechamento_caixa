@@ -8,6 +8,7 @@ export async function up(knex: Knex) {
       table.string("nome").notNullable(); // Valor padrão se não for fornecido
       table.string("email").unique().notNullable(); // Valor padrão se não for fornecido
       table.string("senha").index().unique().notNullable();
+      table.string("role").notNullable(); // Define os valores permitidos para a coluna "role"
       table.comment("Tabela usada para armazenar usuario no sistema");
     })
     .then(() => {

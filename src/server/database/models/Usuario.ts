@@ -3,4 +3,5 @@ export interface Iusuario {
   email: string;
   senha: string;
   nome: string;
+  role: string;
 }

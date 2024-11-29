@@ -9,6 +9,7 @@ export const create = async (
   usuario: Omit<Iusuario, "id">
 ): Promise<number | Error> => {
   try {
+    console.log(usuario);
     // Parte da criptografia
     const hashedPassword = await PasswordCrypto.hashPassword(usuario.senha);
     usuario.senha = hashedPassword;

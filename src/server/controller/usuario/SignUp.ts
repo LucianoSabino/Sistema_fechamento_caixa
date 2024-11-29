@@ -16,29 +16,30 @@ import { UsuarioProvider } from "../../database/providers/usuario";
 interface IBodyProps extends Omit<Iusuario, "id"> {}
 
 export const singUpValidation = validation((getSchema) => ({
-    body: getSchema<IBodyProps>(
-        yup.object().shape({
-            nome: yup.string().required().min(3).max(150),
-            email: yup.string().required().email(),
-            senha: yup.string().required(),
-        })
-    ),
+  body: getSchema<IBodyProps>(
+    yup.object().shape({
+      nome: yup.string().required().min(3).max(150),
+      email: yup.string().required().email(),
+      senha: yup.string().required(),
+      role: yup.string().required(),
+    })
+  ),
 }));
 
 export const singUp = async (
-    req: Request<{}, {}, IBodyProps>,
-    res: Response
+  req: Request<{}, {}, IBodyProps>,
+  res: Response
 ): Promise<void> => {
-    const result = await UsuarioProvider.create(req.body);
+  const result = await UsuarioProvider.create(req.body);
+  console.log(result);
+  if (result instanceof Error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message,
+      },
+    });
+    return;
+  }
 
-    if (result instanceof Error) {
-        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            errors: {
-                default: result.message,
-            },
-        });
-        return;
-    }
-
-    res.status(StatusCodes.CREATED).json(result);
+  res.status(StatusCodes.CREATED).json(result);
 };
