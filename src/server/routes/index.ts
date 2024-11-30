@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import { getRoleFromToken, ensureAuthenticated } from "../shared/middlewares";
 import { UsuarioController } from "../controller";
 import { CaixaController } from "../controller/caixa";
+import { EntregadorController } from "../controller/entrega";
 
 const router = Router();
 
@@ -31,5 +32,12 @@ router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
 router.post("/caixa", CaixaController.createValidation, CaixaController.create);
 router.get("/total", CaixaController.getTotalCaixa);
 router.get("/data", CaixaController.GetDataValidation, CaixaController.getData);
+
+// Entregador
+router.post(
+  "/entregador",
+  EntregadorController.createValidationEntrega,
+  EntregadorController.create
+);
 
 export { router };
