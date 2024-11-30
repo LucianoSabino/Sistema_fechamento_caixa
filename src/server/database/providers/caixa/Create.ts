@@ -5,11 +5,11 @@ import { ETableNames } from "../../ETableNames";
 import { Icaixa } from "../../models";
 
 export const create = async (
-  cidade: Omit<Icaixa, "id">
+  caixa: Omit<Icaixa, "id">
 ): Promise<number | Error> => {
   try {
     const [result] = await Knex(ETableNames.CAIXA)
-      .insert(cidade)
+      .insert(caixa)
       .returning("id");
 
     console.log(result);

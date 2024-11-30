@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
   res.send("Olá mundo!");
 });
 
-//
+// usuario
 router.post(
   "/entrar",
   UsuarioController.singInValidation,
@@ -29,5 +29,7 @@ router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
 // Caixa
 
 router.post("/caixa", CaixaController.createValidation, CaixaController.create);
+router.get("/total", CaixaController.getTotalCaixa);
+router.get("/data", CaixaController.GetDataValidation, CaixaController.getData);
 
 export { router };

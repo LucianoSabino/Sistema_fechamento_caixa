@@ -5,4 +5,5 @@ export interface Icaixa {
   ifoodOnline: string;
   ifood: string;
   despersa: string;
+  usuarioId: number;
 }

@@ -4,14 +4,24 @@ import { ETableNames } from "../ETableNames";
 export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.CAIXA, (table) => {
-      table.bigIncrements("id").primary().index(); // Usando bigIncrements para o id
-      table.string("dinheiro").notNullable();
-      table.string("cartao").notNullable(); // Removendo o acento do nome da coluna
-      table.string("ifoodOnline").notNullable();
-      table.string("ifood").notNullable();
-      table.string("despersa").notNullable();
-      table.timestamp("data").defaultTo(knex.fn.now()).notNullable(); // Usando timestamp para a data
-      table.timestamp("hora").defaultTo(knex.fn.now()).notNullable(); // Usando timestamp para hora
+      table.bigIncrements("id").primary().index();
+      table.decimal("dinheiro", 10, 2).notNullable();
+      table.decimal("cartao", 10, 2).notNullable();
+      table.decimal("ifoodOnline", 10, 2).notNullable();
+      table.decimal("ifood", 10, 2).notNullable();
+      table.decimal("despersa", 10, 2).notNullable();
+      table.date("data").defaultTo(knex.raw("CURRENT_DATE")).notNullable(); // Apenas a data (YYYY-MM-DD)
+
+      // Vinculação com a tabela usuario
+      table
+        .bigInteger("usuarioId")
+        .index()
+        .notNullable()
+        .references("id")
+        .inTable(ETableNames.USUARIO)
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+
       table.comment("Tabela usada para armazenar caixa no sistema");
     })
     .then(() => {

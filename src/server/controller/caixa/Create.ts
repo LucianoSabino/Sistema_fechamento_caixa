@@ -1,17 +1,9 @@
-import { Request, RequestHandler, Response } from "express";
+import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
 import { Icaixa } from "../../database/models";
 import { CaixaProvider } from "../../database/providers/caixa";
-
-// É feito essa interface para ter uma validação mais precisa dos dados
-// Ou seja caso eu não passe o nome ele vai da erro por causa do yup
-
-// Exemplo mais simples, no caso so de baixo é exportado so por sematica mesmo. mas pode ser assim como esta comentado
-// interface ICidade {
-//     nome: string;
-// }
 
 interface IBodyProps extends Omit<Icaixa, "id"> {}
 
@@ -23,6 +15,7 @@ export const createValidation = validation((getSchema) => ({
       ifoodOnline: yup.string().required(),
       ifood: yup.string().required(),
       despersa: yup.string().required(),
+      usuarioId: yup.number().required(),
     })
   ),
 }));
@@ -31,6 +24,7 @@ export const create = async (
   req: Request<{}, {}, IBodyProps>,
   res: Response
 ) => {
+  const usuario = req.body.usuarioId;
   const result = await CaixaProvider.create(req.body);
 
   if (result instanceof Error) {
