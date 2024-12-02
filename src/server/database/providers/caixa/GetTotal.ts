@@ -1,7 +1,7 @@
 import { Knex } from "../../Knex"; // Importa a instância configurada do Knex para interagir com o banco de dados.
 import { ETableNames } from "../../ETableNames"; // Importa os nomes das tabelas definidos no projeto para evitar erros de digitação.
 
-export const total = async (): Promise<
+export const getTotal = async (): Promise<
   | {
       total: number;
       totalDinheiro: number;

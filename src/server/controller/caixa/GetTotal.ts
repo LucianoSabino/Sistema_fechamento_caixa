@@ -8,7 +8,7 @@ export const getTotalCaixa = async (
 ): Promise<void> => {
   try {
     // Chama a função 'total' que calcula o total das colunas do caixa
-    const totalCaixa = await CaixaProvider.total();
+    const totalCaixa = await CaixaProvider.getTotal();
 
     // Se houver erro ao calcular o total, retorna um erro no status 500
     if (totalCaixa instanceof Error) {

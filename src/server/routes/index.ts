@@ -1,9 +1,14 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
-import { getRoleFromToken, ensureAuthenticated } from "../shared/middlewares";
+import {
+  getRoleFromToken,
+  ensureAuthenticated,
+  upload,
+} from "../shared/middlewares";
 import { UsuarioController } from "../controller";
 import { CaixaController } from "../controller/caixa";
 import { EntregadorController } from "../controller/entrega";
+import { ComprovanteEntregaController } from "../controller/comprovanteEntrega";
 
 const router = Router();
 
@@ -39,5 +44,14 @@ router.post(
   EntregadorController.createValidationEntrega,
   EntregadorController.create
 );
+
+// Teste
+
+router.post(
+  "/comprovanteEntrega",
+  upload.single("file"),
+  ComprovanteEntregaController.create
+);
+router.get("/comprovanteEntrega", ComprovanteEntregaController.getImg);
 
 export { router };
