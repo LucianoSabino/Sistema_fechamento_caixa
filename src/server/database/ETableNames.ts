@@ -3,4 +3,5 @@ export enum ETableNames {
   CAIXA = "caixa",
   ENTREGA = "entrega",
   COMPROVANTEENTREGA = "comprovanteEntrega",
+  DESPERSA = "despersa",
 }

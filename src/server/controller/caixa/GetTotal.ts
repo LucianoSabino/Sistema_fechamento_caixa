@@ -28,7 +28,6 @@ export const getTotalCaixa = async (
       totalCartao: totalCaixa.totalCartao,
       totalIfood: totalCaixa.totalIfood,
       totalIfoodOnline: totalCaixa.totalIfoodOnline,
-      totalDispersa: totalCaixa.totalDespersa,
       totalCaixa: totalCaixa.total,
     });
     return;

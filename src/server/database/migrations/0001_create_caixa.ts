@@ -9,8 +9,6 @@ export async function up(knex: Knex) {
       table.decimal("cartao", 10, 2).notNullable();
       table.decimal("ifoodOnline", 10, 2).notNullable();
       table.decimal("ifood", 10, 2).notNullable();
-      table.decimal("despersa", 10, 2).notNullable();
-      table.date("data").defaultTo(knex.raw("CURRENT_DATE")).notNullable(); // Apenas a data (YYYY-MM-DD)
 
       // Vinculação com a tabela usuario
       table
@@ -21,6 +19,7 @@ export async function up(knex: Knex) {
         .inTable(ETableNames.USUARIO)
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
+      table.date("data").defaultTo(knex.raw("CURRENT_DATE")).notNullable(); // Apenas a data (YYYY-MM-DD)
 
       table.comment("Tabela usada para armazenar caixa no sistema");
     })

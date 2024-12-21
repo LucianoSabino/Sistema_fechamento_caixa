@@ -9,6 +9,7 @@ import { UsuarioController } from "../controller";
 import { CaixaController } from "../controller/caixa";
 import { EntregadorController } from "../controller/entrega";
 import { ComprovanteEntregaController } from "../controller/comprovanteEntrega";
+import { despesaController } from "../controller/despersa";
 
 const router = Router();
 
@@ -34,7 +35,7 @@ router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
 
 // Caixa
 
-router.post("/caixa", CaixaController.createValidation, CaixaController.create);
+router.post("/caixa", CaixaController.createValidation, CaixaController.create); //Criar caixa
 router.get("/total", CaixaController.getTotalCaixa);
 router.get("/data", CaixaController.GetDataValidation, CaixaController.getData);
 
@@ -53,5 +54,8 @@ router.post(
   ComprovanteEntregaController.create
 );
 router.get("/comprovanteEntrega", ComprovanteEntregaController.getImg);
+
+// Despersa
+router.post("/despersa", upload.single("file"), despesaController.create);
 
 export { router };

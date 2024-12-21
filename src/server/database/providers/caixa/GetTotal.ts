@@ -8,7 +8,6 @@ export const getTotal = async (): Promise<
       totalCartao: number;
       totalIfood: number;
       totalIfoodOnline: number;
-      totalDespersa: number;
     }
   | Error
 > => {
@@ -20,7 +19,6 @@ export const getTotal = async (): Promise<
         totalCartao: "cartao", // Soma os valores da coluna 'cartao'.
         totalIfoodOnline: "ifoodOnline", // Soma os valores da coluna 'ifoodOnline'.
         totalIfood: "ifood", // Soma os valores da coluna 'ifood'.
-        totalDespersa: "despersa", // Soma os valores da coluna 'despersa'.
       })
       .first(); // Pega o primeiro registro do resultado, já que estamos somando todos os registros da tabela.
 
@@ -36,20 +34,17 @@ export const getTotal = async (): Promise<
     const totalCartao = result.totalCartao || 0;
     const totalIfoodOnline = result.totalIfoodOnline || 0;
     const totalIfood = result.totalIfood || 0;
-    const totalDespersa = result.totalDespersa || 0;
     const total =
       (result.totalDinheiro || 0) + // Soma total de dinheiro.
       (result.totalCartao || 0) + // Soma total de cartão.
       (result.totalIfoodOnline || 0) + // Soma total de iFood Online.
-      (result.totalIfood || 0) - // Soma total de iFood.
-      (result.totalDespersa || 0); // Subtrai total de despesas.
+      (result.totalIfood || 0);
 
     return {
       totalDinheiro,
       totalCartao,
       totalIfood,
       totalIfoodOnline,
-      totalDespersa,
       total,
     }; // Retorna o total calculado como um objeto.
   } catch (error) {
