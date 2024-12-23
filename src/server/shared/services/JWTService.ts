@@ -3,6 +3,7 @@ import * as jwt from "jsonwebtoken";
 interface IJwtData {
   uid: number;
   role: string;
+  nome: string;
 }
 
 // Ele gera o tokem

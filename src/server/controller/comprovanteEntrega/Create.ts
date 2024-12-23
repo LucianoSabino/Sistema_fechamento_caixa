@@ -5,14 +5,13 @@ import { validation } from "../../shared/middlewares";
 import { IcomprovanteEntrega } from "../../database/models";
 import { ComprovanteEntregaProvider } from "../../database/providers/comprovanteEntrega";
 
-interface IBodyProps extends Omit<IcomprovanteEntrega, "id" | "src"> {
-  nome: string;
-}
+interface IBodyProps extends Omit<IcomprovanteEntrega, "id" | "src"> {}
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
-      nome: yup.string().required(),
+      usuarioId: yup.string().required(),
+      entregaId: yup.string().required(),
     })
   ),
 }));
@@ -22,10 +21,8 @@ export const create = async (
   req: Request<{}, {}, IBodyProps>,
   res: Response
 ): Promise<void> => {
-  const { nome } = req.body;
+  const { usuarioId, entregaId } = req.body;
   const file = req.file;
-
-  console.log(nome);
   console.log(file);
 
   if (!file) {
@@ -38,7 +35,8 @@ export const create = async (
   }
 
   const result = await ComprovanteEntregaProvider.create({
-    nome,
+    usuarioId,
+    entregaId,
     src: file.path.replace(/\\/g, "/"),
   });
 

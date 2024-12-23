@@ -1,3 +1,8 @@
+#### O que tem que fazer
+
+- vincular o id do pagamento do entregador a comprovante
+- fazer um jeito de verificação, se for dinheiro não precisa do comprovante
+
 <h3 align="center"> Inicializando o Node e o Git</h3>
 
         npm init -y

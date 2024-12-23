@@ -14,7 +14,9 @@ export const createValidationEntrega = validation((getSchema) => ({
       dinheiro: yup.string().required(),
       cartao: yup.string().required(),
       quantidaEntrega: yup.string().required(),
-      ValorEntrega: yup.string().required(),
+      valorEntregaDinheiro: yup.string().required(),
+      valorEntregaPix: yup.string().required(),
+      usuarioId: yup.string().required(),
     })
   ),
 }));

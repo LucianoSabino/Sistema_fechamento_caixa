@@ -70,6 +70,7 @@ export const singIn = async (
     const accessToken = JWTService.sign({
       uid: result.id,
       role: result.role,
+      nome: result.nome,
     });
 
     if (accessToken === "JWT_SECRET_NOT_FOUND") {

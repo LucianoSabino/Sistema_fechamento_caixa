@@ -9,7 +9,16 @@ export async function up(knex: Knex) {
       table.decimal("dinheiro", 10, 2).notNullable();
       table.decimal("cartao", 10, 2).notNullable();
       table.decimal("quantidaEntrega", 10).notNullable();
-      table.decimal("valorEntrega", 10, 2).notNullable();
+      table.decimal("valorEntregaDinheiro", 10, 2).notNullable();
+      table.decimal("valorEntregaPix", 10, 2).notNullable();
+      table
+        .bigInteger("usuarioId")
+        .index()
+        .notNullable()
+        .references("id")
+        .inTable(ETableNames.USUARIO)
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
       table.date("data").defaultTo(knex.raw("CURRENT_DATE")).notNullable(); // Apenas a data (YYYY-MM-DD)
 
       table.comment("Tabela usada para armazenar entrega no sistema");

@@ -4,5 +4,7 @@ export interface Ientrega {
   dinheiro: string;
   cartao: string;
   quantidaEntrega: string;
-  ValorEntrega: string;
+  valorEntregaDinheiro: string;
+  valorEntregaPix: string;
+  usuarioId: string;
 }
