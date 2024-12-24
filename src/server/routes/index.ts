@@ -57,5 +57,10 @@ router.get("/comprovanteEntrega", ComprovanteEntregaController.getImg);
 
 // Despersa
 router.post("/despersa", upload.single("file"), despesaController.create);
+router.get(
+  "/dataDespersa",
+  despesaController.GetDataValidation,
+  despesaController.getData
+);
 
 export { router };

@@ -1,5 +1,6 @@
 export interface Idespersa {
   id: number;
-  despersa: string;
+  valorDespersa: string;
   src: string;
+  usuarioId: string;
 }

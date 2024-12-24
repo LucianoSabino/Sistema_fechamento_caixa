@@ -6,13 +6,14 @@ import { Idespersa } from "../../database/models";
 import { DespersaProvider } from "../../database/providers/despersa";
 
 interface IBodyProps extends Omit<Idespersa, "id" | "src"> {
-  despersa: string;
+  valorDespersa: string;
 }
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
-      despersa: yup.string().required(),
+      valorDespersa: yup.string().required(),
+      usuarioId: yup.string().required(),
     })
   ),
 }));
@@ -21,8 +22,9 @@ export const create = async (
   req: Request<{}, {}, IBodyProps>,
   res: Response
 ) => {
-  const { despersa } = req.body;
+  const { valorDespersa } = req.body;
   const file = req.file;
+  const usuarioId = req.body.usuarioId;
 
   if (!file) {
     res.status(StatusCodes.BAD_REQUEST).json({
@@ -34,8 +36,10 @@ export const create = async (
   }
 
   const result = await DespersaProvider.create({
-    despersa,
+    valorDespersa,
     src: file.path.replace(/\\/g, "/"),
+    // src: `/uploads/${file.filename}`,
+    usuarioId,
   });
 
   if (result instanceof Error) {
@@ -44,6 +48,7 @@ export const create = async (
         default: result.message,
       },
     });
+    return;
   }
 
   res.status(StatusCodes.CREATED).json(result);

@@ -24,7 +24,7 @@ export const create = async (
       return result;
     }
 
-    return new Error("Erro ao cadastras o registro");
+    return new Error("Erro ao casdastras o registro");
   } catch (error) {
     return Error("Erro ao cadastras o registro");
   }
