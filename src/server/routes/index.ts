@@ -45,6 +45,11 @@ router.post(
   EntregadorController.createValidationEntrega,
   EntregadorController.create
 );
+router.get(
+  "/dataEntregador",
+  EntregadorController.GetDataValidation,
+  EntregadorController.getData
+);
 
 // Teste
 
