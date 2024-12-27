@@ -51,6 +51,8 @@ router.get(
   EntregadorController.getData
 );
 
+router.get("/getDataComprovante", EntregadorController.getDataComprovante);
+
 // Teste
 
 router.post(
