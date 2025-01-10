@@ -53,14 +53,14 @@ router.get(
 
 router.get("/getDataComprovante", EntregadorController.getDataComprovante);
 
-// Teste
-
 router.post(
   "/comprovanteEntrega",
   upload.single("file"),
   ComprovanteEntregaController.create
 );
 router.get("/comprovanteEntrega", ComprovanteEntregaController.getImg);
+
+router.get("/totalEntrega", EntregadorController.getTotalEntrega);
 
 // Despersa
 router.post("/despersa", upload.single("file"), despesaController.create);
