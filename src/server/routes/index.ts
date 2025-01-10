@@ -70,4 +70,6 @@ router.get(
   despesaController.getData
 );
 
+router.get("/totalDespersa", despesaController.getTotalDespersa);
+
 export { router };
