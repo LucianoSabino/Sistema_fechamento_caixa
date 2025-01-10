@@ -10,6 +10,7 @@ import { CaixaController } from "../controller/caixa";
 import { EntregadorController } from "../controller/entrega";
 import { ComprovanteEntregaController } from "../controller/comprovanteEntrega";
 import { despesaController } from "../controller/despersa";
+import { TaxasController } from "../controller/taxas";
 
 const router = Router();
 
@@ -71,5 +72,10 @@ router.get(
 );
 
 router.get("/totalDespersa", despesaController.getTotalDespersa);
+
+// Taxas
+router.post("/taxas", TaxasController.createValidation, TaxasController.update);
+
+router.get("/getTaxas", TaxasController.Get);
 
 export { router };

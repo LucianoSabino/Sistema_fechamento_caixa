@@ -4,6 +4,7 @@ import {
   IcomprovanteEntrega,
   Iusuario,
   Idespersa,
+  Itaxas,
 } from "../../models";
 
 declare module "knex/types/tables" {
@@ -13,5 +14,6 @@ declare module "knex/types/tables" {
     entrega: Ientrega;
     comprovanteEntrega: IcomprovanteEntrega;
     despersa: Idespersa;
+    taxas: Itaxas;
   }
 }
