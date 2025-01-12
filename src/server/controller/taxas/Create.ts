@@ -13,6 +13,7 @@ export const createValidation = validation((getSchema) => ({
       taxaCartao: yup.number().required(),
       taxaIfood: yup.number().required(),
       taxaIfoodOnline: yup.number().required(),
+      despersaMes: yup.number().required(),
     })
   ),
 }));

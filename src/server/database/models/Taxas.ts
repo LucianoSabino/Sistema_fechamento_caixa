@@ -3,4 +3,5 @@ export interface Itaxas {
   taxaCartao: number;
   taxaIfood: number;
   taxaIfoodOnline: number;
+  despersaMes: number;
 }

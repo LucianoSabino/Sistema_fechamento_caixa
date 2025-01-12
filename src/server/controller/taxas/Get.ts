@@ -21,7 +21,7 @@ export const Get = async (req: Request, res: Response): Promise<void> => {
     // Responde com o total calculado no caixa
     res.status(StatusCodes.OK).json({
       // Total calculado das colunas no 'caixa'
-      totalCartao: getTaxas.taxaCartao,
+      taxaCartao: getTaxas.taxaCartao,
       taxaIfood: getTaxas.taxaIfood,
       taxaIfoodOnline: getTaxas.taxaIfoodOnline,
     });

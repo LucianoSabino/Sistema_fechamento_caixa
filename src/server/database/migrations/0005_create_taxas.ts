@@ -8,6 +8,7 @@ export async function up(knex: Knex) {
       table.string("taxaCartao").index().notNullable();
       table.string("taxaIfood").index().notNullable();
       table.string("taxaIfoodOnline").index().notNullable();
+      table.string("despersaMes").index().notNullable();
     })
     .then(() => {
       console.log(`# Create table ${ETableNames.TAXAS}`);
@@ -17,6 +18,7 @@ export async function up(knex: Knex) {
         taxaCartao: 0.05,
         taxaIfood: 0.12,
         taxaIfoodOnline: 0.08,
+        despersaMes: 0,
       });
     });
 }
