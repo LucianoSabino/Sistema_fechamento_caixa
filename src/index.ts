@@ -12,12 +12,7 @@ if (process.env.IS_LOCALHOST !== "true") {
 
   Knex.migrate
     .latest()
-    .then(() => {
-      Knex.seed
-        .run()
-        .then(() => startServer())
-        .catch(console.log);
-    })
+    .then(() => startServer())
     .catch(console.log);
 } else {
   startServer();
