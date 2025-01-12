@@ -170,6 +170,11 @@ Assim foi feito para todas as rotas.
 
 <h3 align="center"> Deploy da API Express no Render</h3>
 
+- Colocar isso no *package.json* em script
+
+          "postinstall": "tsc",
+          "production": "node ./build/index.js",
+
 - Link do site rodando [Api](https://api-typescript-t76p.onrender.com)
 
 - Site para fazer deploy [Site Render](https://render.com/)
