@@ -30,6 +30,7 @@ export const singUp = async (
   req: Request<{}, {}, IBodyProps>,
   res: Response
 ): Promise<void> => {
+  console.log(req.body);
   const result = await UsuarioProvider.create(req.body);
   console.log(result);
   if (result instanceof Error) {
