@@ -36,7 +36,6 @@
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.7",
     "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
     "typescript": "^5.7.2"
   },
   "compilerOptions": {

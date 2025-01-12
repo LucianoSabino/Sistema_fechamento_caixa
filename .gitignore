@@ -1,6 +1,7 @@
 /node_modules
 rr.md
 .env
+/build
 
 /coverage
 *.sqlite
