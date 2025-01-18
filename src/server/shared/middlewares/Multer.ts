@@ -36,19 +36,19 @@ import multer from "multer";
 import path from "path";
 import fs from "fs";
 
-// Caminho da pasta "uploads"
-const uploadDir = path.join(__dirname, "uploads");
+// Caminho absoluto para a pasta "uploads" na raiz do projeto
+const uploadDir = path.resolve("uploads");
 
 // Garantir que a pasta "uploads" exista
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
-  console.log('Pasta "uploads" criada com sucesso.');
+  console.log('Pasta "uploads" criada com sucesso na raiz do projeto.');
 }
 
 // Configuração do armazenamento do multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir); // Usa a pasta 'uploads' para armazenar os arquivos
+    cb(null, uploadDir); // Usa a pasta 'uploads' na raiz
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}${path.extname(file.originalname)}`); // Nome do arquivo com timestamp
@@ -64,7 +64,6 @@ const upload = multer({
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true); // Permite o arquivo
     } else {
-      // Aqui, passamos o erro corretamente com tipo 'Error' que o multer espera
       cb(new Error("Tipo de arquivo não permitido") as any, false); // Rejeita o arquivo
     }
   },
