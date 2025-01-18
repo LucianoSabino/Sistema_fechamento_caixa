@@ -7,6 +7,7 @@
     "dev": "nodemon --watch \"src/\" --exec \"node_modules/.bin/ts-node src/index.ts\" -e ts",
     "postinstall": "npx tsc",
     "production": "node ./build/index.js",
+    "start": "node ./build/index.js",
     "knex:rollback-all": "knex --knexfile ./src/server/database/Knex/knexfile.ts migrate:rollback --all",
     "knex:rollback": "knex --knexfile ./src/server/database/Knex/knexfile.ts migrate:rollback",
     "knex:migrate": "knex --knexfile ./src/server/database/Knex/knexfile.ts migrate:latest",
