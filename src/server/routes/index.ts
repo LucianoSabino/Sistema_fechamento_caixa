@@ -26,8 +26,18 @@ router.post(
 );
 router.post(
   "/cadastra",
+  ensureAuthenticated,
   UsuarioController.singUpValidation,
   UsuarioController.singUp
+);
+
+router.get("/usuarios", ensureAuthenticated, UsuarioController.getAllUsuario);
+
+router.post(
+  "/upadetRole",
+  ensureAuthenticated,
+  UsuarioController.updateRoleValidation,
+  UsuarioController.update
 );
 
 router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
@@ -36,46 +46,86 @@ router.get("/admin", ensureAuthenticated, getRoleFromToken, (req, res) => {
 
 // Caixa
 
-router.post("/caixa", CaixaController.createValidation, CaixaController.create); //Criar caixa
-router.get("/total", CaixaController.getTotalCaixa);
-router.get("/data", CaixaController.GetDataValidation, CaixaController.getData);
+router.post(
+  "/caixa",
+  ensureAuthenticated,
+  CaixaController.createValidation,
+  CaixaController.create
+); //Criar caixa
+router.get("/total", ensureAuthenticated, CaixaController.getTotalCaixa);
+router.get(
+  "/data",
+  ensureAuthenticated,
+  CaixaController.GetDataValidation,
+  CaixaController.getData
+);
 
 // Entregador
 router.post(
   "/entregador",
+  ensureAuthenticated,
   EntregadorController.createValidationEntrega,
   EntregadorController.create
 );
 router.get(
   "/dataEntregador",
+  ensureAuthenticated,
   EntregadorController.GetDataValidation,
   EntregadorController.getData
 );
 
-router.get("/getDataComprovante", EntregadorController.getDataComprovante);
+router.get(
+  "/getDataComprovante",
+  ensureAuthenticated,
+  EntregadorController.getDataComprovante
+);
 
 router.post(
   "/comprovanteEntrega",
+  ensureAuthenticated,
   upload.single("file"),
   ComprovanteEntregaController.create
 );
-router.get("/comprovanteEntrega", ComprovanteEntregaController.getImg);
+router.get(
+  "/comprovanteEntrega",
+  ensureAuthenticated,
+  ComprovanteEntregaController.getImg
+);
 
-router.get("/totalEntrega", EntregadorController.getTotalEntrega);
+router.get(
+  "/totalEntrega",
+  ensureAuthenticated,
+  EntregadorController.getTotalEntrega
+);
 
 // Despersa
-router.post("/despersa", upload.single("file"), despesaController.create);
+router.post(
+  "/despersa",
+  ensureAuthenticated,
+  upload.single("file"),
+  despesaController.create
+);
 router.get(
   "/dataDespersa",
+  ensureAuthenticated,
   despesaController.GetDataValidation,
   despesaController.getData
 );
 
-router.get("/totalDespersa", despesaController.getTotalDespersa);
+router.get(
+  "/totalDespersa",
+  ensureAuthenticated,
+  despesaController.getTotalDespersa
+);
 
 // Taxas
-router.post("/taxas", TaxasController.createValidation, TaxasController.update);
+router.post(
+  "/taxas",
+  ensureAuthenticated,
+  TaxasController.createValidation,
+  TaxasController.update
+);
 
-router.get("/getTaxas", TaxasController.Get);
+router.get("/getTaxas", ensureAuthenticated, TaxasController.Get);
 
 export { router };
