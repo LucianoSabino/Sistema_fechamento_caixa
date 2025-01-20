@@ -11,7 +11,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const getEnviroment = () => {
-  switch (process.env.NODE_ENV) {
+  const env = process.env.NODE_ENV || "development";
+  console.log(`Using environment: ${env}`); // Debug: verifica o ambiente atual
+  switch (env) {
     case "production":
       return production;
     case "test":
@@ -20,5 +22,4 @@ const getEnviroment = () => {
       return development;
   }
 };
-
 export const Knex = knex(getEnviroment());
