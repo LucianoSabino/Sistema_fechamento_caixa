@@ -3,6 +3,7 @@ rr.md
 .env
 /build
 parteCodigo.md
+.env
 
 /coverage
 *.sqlite
