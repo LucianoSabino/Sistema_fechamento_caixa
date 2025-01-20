@@ -26,7 +26,6 @@ router.post(
 );
 router.post(
   "/cadastra",
-  ensureAuthenticated,
   UsuarioController.singUpValidation,
   UsuarioController.singUp
 );
