@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const getEnviroment = () => {
-  const env = process.env.NODE_ENV || "development";
+  const env = process.env.NODE_ENV || "production";
   console.log(`Using environment: ${env}`); // Debug: verifica o ambiente atual
   switch (env) {
     case "production":
