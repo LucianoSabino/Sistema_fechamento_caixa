@@ -28,7 +28,7 @@ export const getTotalCaixa = async (
       totalCartao: Number(totalCaixa.totalCartao) || 0,
       totalIfood: Number(totalCaixa.totalIfood) || 0,
       totalIfoodOnline: Number(totalCaixa.totalIfoodOnline) || 0,
-      totalCaixa: Number(totalCaixa.total) || 0,
+      totalCaixa: totalCaixa.total,
     });
     return;
   } catch (error) {

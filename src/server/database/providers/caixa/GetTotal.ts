@@ -40,6 +40,7 @@ export const getTotal = async (): Promise<
       (result.totalIfoodOnline || 0) + // Soma total de iFood Online.
       (result.totalIfood || 0);
 
+    console.log("Total do caixa provaider", total);
     return {
       totalDinheiro,
       totalCartao,
