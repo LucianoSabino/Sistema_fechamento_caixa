@@ -6,13 +6,13 @@ import { Idespersa } from "../../database/models";
 import { DespersaProvider } from "../../database/providers/despersa";
 
 interface IBodyProps extends Omit<Idespersa, "id" | "src"> {
-  valorDespersa: string;
+  valorDespersa: number;
 }
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
-      valorDespersa: yup.string().required(),
+      valorDespersa: yup.number().required(),
       usuarioId: yup.string().required(),
     })
   ),
