@@ -24,11 +24,11 @@ export const getTotalCaixa = async (
     // Responde com o total calculado no caixa
     res.status(StatusCodes.OK).json({
       // Total calculado das colunas no 'caixa'
-      totalDinheiro: totalCaixa.totalDinheiro,
-      totalCartao: totalCaixa.totalCartao,
-      totalIfood: totalCaixa.totalIfood,
-      totalIfoodOnline: totalCaixa.totalIfoodOnline,
-      totalCaixa: totalCaixa.total,
+      totalDinheiro: Number(totalCaixa.totalDinheiro) || 0,
+      totalCartao: Number(totalCaixa.totalCartao) || 0,
+      totalIfood: Number(totalCaixa.totalIfood) || 0,
+      totalIfoodOnline: Number(totalCaixa.totalIfoodOnline) || 0,
+      totalCaixa: Number(totalCaixa.total) || 0,
     });
     return;
   } catch (error) {

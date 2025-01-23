@@ -32,12 +32,14 @@
 // // Exportamos o objeto `upload` para ser utilizado em outros módulos
 // export { upload };
 
+// ---------------------------------------------------------------------------------------------------
+
 import multer from "multer";
 import path from "path";
 import fs from "fs";
 
 // Caminho absoluto para a pasta "uploads" na raiz do projeto
-const uploadDir = path.resolve("uploads");
+const uploadDir = path.resolve(process.cwd(), "uploads"); // Usa process.cwd() para garantir que o caminho seja resolvido corretamente
 
 // Garantir que a pasta "uploads" exista
 if (!fs.existsSync(uploadDir)) {
@@ -48,7 +50,7 @@ if (!fs.existsSync(uploadDir)) {
 // Configuração do armazenamento do multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, uploadDir); // Usa a pasta 'uploads' na raiz
+    cb(null, uploadDir); // Usa a pasta 'uploads' na raiz do projeto
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}${path.extname(file.originalname)}`); // Nome do arquivo com timestamp
