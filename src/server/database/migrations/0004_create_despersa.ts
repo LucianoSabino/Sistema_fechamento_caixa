@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.DESPERSA, (table) => {
       table.bigIncrements("id").primary().index();
-      table.string("valorDespersa").index().notNullable();
+      table.float("valorDespersa").index().notNullable();
       table.string("src").index().notNullable();
       table
         .bigInteger("usuarioId")

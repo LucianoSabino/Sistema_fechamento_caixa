@@ -6,11 +6,11 @@ export async function up(knex: Knex) {
     .createTable(ETableNames.ENTREGA, (table) => {
       table.bigIncrements("id").primary().index();
       table.string("nomeEntregador").index().notNullable();
-      table.decimal("dinheiro", 10, 2).notNullable();
-      table.decimal("cartao", 10, 2).notNullable();
-      table.decimal("quantidaEntrega", 10).notNullable();
-      table.decimal("valorEntregaDinheiro", 10, 2).notNullable();
-      table.decimal("valorEntregaPix", 10, 2).notNullable();
+      table.float("dinheiro", 10, 2).notNullable();
+      table.float("cartao", 10, 2).notNullable();
+      table.float("quantidaEntrega", 10).notNullable();
+      table.float("valorEntregaDinheiro", 10, 2).notNullable();
+      table.float("valorEntregaPix", 10, 2).notNullable();
       table
         .bigInteger("usuarioId")
         .index()

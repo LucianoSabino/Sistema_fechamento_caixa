@@ -31,11 +31,12 @@ export const getTotal = async (): Promise<
     // Calcula o total geral:
     // Soma as receitas ('dinheiro', 'cartao', 'ifoodOnline', 'ifood') e subtrai as despesas ('despersa').
     // O operador '|| 0' garante que valores nulos sejam tratados como zero.
-    const totalDinheiro = result.totalDinheiro || 0;
-    const totalCartao = result.totalCartao || 0;
-    const totalQuantidaEntrega = result.totalQuantidaEntrega || 0;
-    const totalValorEntregaDinheiro = result.totalValorEntregaDinheiro || 0;
-    const totalValorEntregaPix = result.totalValorEntregaPix || 0;
+    const totalDinheiro = Number(result.totalDinheiro) || 0;
+    const totalCartao = Number(result.totalCartao) || 0;
+    const totalQuantidaEntrega = Number(result.totalQuantidaEntrega) || 0;
+    const totalValorEntregaDinheiro =
+      Number(result.totalValorEntregaDinheiro) || 0;
+    const totalValorEntregaPix = Number(result.totalValorEntregaPix) || 0;
 
     return {
       totalDinheiro,

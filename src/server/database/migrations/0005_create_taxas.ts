@@ -5,10 +5,10 @@ export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.TAXAS, (table) => {
       table.bigIncrements("id").primary().index();
-      table.string("taxaCartao").index().notNullable();
-      table.string("taxaIfood").index().notNullable();
-      table.string("taxaIfoodOnline").index().notNullable();
-      table.string("despersaMes").index().notNullable();
+      table.float("taxaCartao").index().notNullable();
+      table.float("taxaIfood").index().notNullable();
+      table.float("taxaIfoodOnline").index().notNullable();
+      table.float("despersaMes").index().notNullable();
     })
     .then(() => {
       console.log(`# Create table ${ETableNames.TAXAS}`);

@@ -22,9 +22,9 @@ export const Get = async (): Promise<
 
     // Retorna os valores dos campos encontrados
     return {
-      taxaCartao: result.taxaCartao || 1,
-      taxaIfood: result.taxaIfood || 1,
-      taxaIfoodOnline: result.taxaIfoodOnline || 1,
+      taxaCartao: Number(result.taxaCartao) || 1,
+      taxaIfood: Number(result.taxaIfood) || 1,
+      taxaIfoodOnline: Number(result.taxaIfoodOnline) || 1,
     };
   } catch (error) {
     // Caso ocorra um erro na execução da query ou no processamento dos dados, exibe o erro no console.
