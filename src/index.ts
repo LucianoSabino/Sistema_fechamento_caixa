@@ -38,3 +38,5 @@ console.log("Migrações concluídas. Iniciando o servidor...");
 app.listen(process.env.PORT || 8080, () => {
   console.log("Api rodado na porta 8080");
 });
+
+// tttt
